@@ -45,8 +45,8 @@
 }
 
 .explore-menu-list-item img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 10px;
@@ -58,7 +58,7 @@
 }
 
 .explore-menu-list-item p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #333;
     margin: 0;
@@ -67,12 +67,12 @@
 }
 
 /* Active state for selected category */
-.explore-menu-list-item.active img {
+.explore-menu-list-item img.active {
     border: 4px solid #ff6b35;
     box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
 }
 
-.explore-menu-list-item.active p {
+.explore-menu-list-item p.active {
     color: #ff6b35;
     font-weight: 700;
 }
