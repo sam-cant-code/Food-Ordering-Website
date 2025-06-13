@@ -4,12 +4,12 @@
    height: 70vh;
    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./header_img.jpg');
    background-size: cover;
-   background-position: -100px center;
+   background-position: center center; /* Changed from -100px center */
    background-repeat: no-repeat;
    display: flex;
    align-items: center;
-   justify-content: flex-start;
-   padding: 0 4%;
+   justify-content: center; /* Changed from flex-start */
+   padding: 0 2%; /* Reduced padding */
    margin: 0 auto;
    border-radius: 25px;
    overflow: hidden;
@@ -81,7 +81,7 @@
        padding: 0 4%;
        margin: 0 auto;
        border-radius: 10px;
-       background-position: -30px center;
+       background-position: center center; /* Changed from -30px center */
    }
    
    .header-contents h2{
@@ -102,7 +102,7 @@
    .header{
        height: 50vh;
        padding: 0 4%;
-       background-position: -20px center;
+       background-position: center center; /* Changed from -20px center */
    }
    
    .header-contents h2{
