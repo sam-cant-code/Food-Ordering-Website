@@ -2,7 +2,7 @@
    width: 100%;
    max-width: 1440px;
    height: 70vh;
-   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./header_img.jpg');
+   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/header_img.jpg');
    background-size: cover;
    background-position: center center; /* Changed from -100px center */
    background-repeat: no-repeat;
