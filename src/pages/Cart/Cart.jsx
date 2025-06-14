@@ -104,7 +104,7 @@ const Cart = () => {
             >
               Continue Shopping
             </button>
-            <button className="checkout-btn">PROCEED TO CHECKOUT</button>
+            <button onClick={()=>navigate('/order')} className="checkout-btn">PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>
