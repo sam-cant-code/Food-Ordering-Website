@@ -59,6 +59,41 @@
  height: 36px;
  object-fit: contain;
 }
+.bag-icon {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bag-icon:hover {
+  transform: scale(1.1); /* Slight grow on hover */
+}
+
+.bag-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.bag-dot {
+  position: absolute;
+  min-width: 18px;
+  min-height: 18px;
+  background-color: #ff6347;
+  border-radius: 50%;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  padding: 2px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
 
 
 
@@ -137,6 +172,7 @@
     padding: 6px 18px;
     font-size: 14px;
  }
+
 }
 
 /* Mobile styles */
@@ -207,10 +243,42 @@
     height: 24px;
  }
  
- .bag-icon img {
-    width: 38px;
-    height: 38px;
- }
+ .bag-icon {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bag-icon:hover {
+  transform: scale(1.1); /* Slight grow on hover */
+}
+
+.bag-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.bag-dot {
+  position: absolute;
+  min-width: 18px;
+  min-height: 18px;
+  background-color: #ff6347;
+  border-radius: 50%;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  padding: 2px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
 }
 
 /* Small mobile styles */
@@ -244,8 +312,40 @@
     height: 22px;
  }
  
- .bag-icon img {
-    width: 36px;
-    height: 36px;
- }
+ .bag-icon {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bag-icon:hover {
+  transform: scale(1.1); /* Slight grow on hover */
+}
+
+.bag-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.bag-dot {
+  position: absolute;
+  min-width: 18px;
+  min-height: 18px;
+  background-color: #ff6347;
+  border-radius: 50%;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  padding: 2px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
 }

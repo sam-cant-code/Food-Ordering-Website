@@ -1,18 +1,62 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './FoodDisplay.css'
 import {StoreContext} from '../../context/StoreContext'
 
 const FoodDisplay = ({category}) => {
     const {food_list, cartItems, addToCart, removeFromCart} = useContext(StoreContext);
+    const [showBackButton, setShowBackButton] = useState(false);
 
     // Safety check to ensure food_list exists
     if(!food_list || !Array.isArray(food_list)) {
         return <div className='food-display'>Loading...</div>;
     }
 
+    // Function to get display title based on category
+    const getDisplayTitle = () => {
+        if (category === "all") {
+            return "All Pastries";
+        }
+        // Capitalize first letter and make it plural if needed
+        return category.charAt(0).toUpperCase() + category.slice(1);
+    }
+
+    // Function to scroll back to menu
+    const scrollToMenu = () => {
+        const menuSection = document.getElementById('explore-menu');
+        if (menuSection) {
+            const offsetTop = menuSection.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Check if user has scrolled near the bottom of the page
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Show button when user is within 200px of the bottom
+            const isNearBottom = scrollTop + windowHeight >= documentHeight - 200;
+            setShowBackButton(isNearBottom);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Check initial scroll position
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <div className='food-display' id='food-display'>
-            <h2>Pastry List</h2>
+            <div className="food-display-header">
+                <h2>{getDisplayTitle()}</h2>
+            </div>
             <div className='food-display-list'>
                 {food_list.map((item, index)=>{
                     // Add this condition to filter items
@@ -66,6 +110,14 @@ const FoodDisplay = ({category}) => {
                     return null;
                 })}
             </div>
+            
+            {/* Scroll-triggered back button - bottom right */}
+            <button 
+                className={`back-button-scroll ${showBackButton ? 'show' : ''}`} 
+                onClick={scrollToMenu}
+            >
+                Back to Menu
+            </button>
         </div>
     )
 }

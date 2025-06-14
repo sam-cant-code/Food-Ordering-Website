@@ -1,7 +1,10 @@
+/* Food Display Styles */
 .food-display {
   margin: 2rem auto;
   max-width: 1200px;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+  padding-bottom: 100px;
+  padding-top: 0px;
 }
 
 .food-display h2 {
@@ -11,6 +14,7 @@
   margin-bottom: 3rem;
   color: #8b4513;
   position: relative;
+  padding-top: 20px;
 }
 
 .food-display h2::after {
@@ -204,6 +208,137 @@
   align-self: flex-start;
 }
 
+/* Back Button Styles */
+.back-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+}
+
+.back-button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+.back-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+/* Back arrow icon */
+.back-button::before {
+  content: '←';
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover::before {
+  transform: translateX(-2px);
+}
+
+/* Alternative circular back button */
+.back-button-circle {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+}
+
+.back-button-circle:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+.back-button-circle:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+.back-button-circle::before {
+  content: '←';
+  transition: transform 0.3s ease;
+}
+
+.back-button-circle:hover::before {
+  transform: translateX(-1px);
+}
+
+/* Static positioning at bottom of container */
+.back-button-static {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  margin: 40px auto 20px;
+  width: fit-content;
+}
+
+.back-button-static:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+.back-button-static::before {
+  content: '←';
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.back-button-static:hover::before {
+  transform: translateX(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .food-display-list {
@@ -268,6 +403,27 @@
     height: 22px;
     font-size: 12px;
   }
+
+  /* Back button responsive */
+  .back-button {
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+
+  .back-button::before {
+    font-size: 16px;
+  }
+
+  .back-button-circle {
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -298,6 +454,141 @@
     width: 20px;
     height: 20px;
     font-size: 10px;
+  }
+
+  .back-button-scroll {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  transition: all 0.4s ease;
+  z-index: 1000;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  min-width: 160px;
+  justify-content: center;
+  
+  /* Initially hidden */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+}
+
+/* Show the button when scrolled to bottom */
+.back-button-scroll.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-button-scroll:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+.back-button-scroll:active {
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+/* Back arrow icon */
+.back-button-scroll::before {
+  content: '←';
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  margin-right: 4px;
+}
+
+.back-button-scroll:hover::before {
+  transform: translateX(-2px);
+}
+
+/* Alternative circular version for mobile */
+.back-button-scroll-circle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  transition: all 0.4s ease;
+  z-index: 1000;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  
+  /* Initially hidden */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+}
+
+.back-button-scroll-circle.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-button-scroll-circle:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4);
+}
+
+.back-button-scroll-circle::before {
+  content: '←';
+  transition: transform 0.3s ease;
+}
+
+.back-button-scroll-circle:hover::before {
+  transform: translateX(-1px);
+}
+
+/* Responsive design for scroll button */
+@media (max-width: 768px) {
+  .back-button-scroll {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    min-width: 140px;
+  }
+
+  .back-button-scroll::before {
+    font-size: 16px;
+  }
+
+  .back-button-scroll-circle {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    font-size: 18px;
   }
 }
 
@@ -336,4 +627,5 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
 }
