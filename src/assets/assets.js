@@ -127,7 +127,7 @@ export const food_list = [
         description: "Decadent white chocolate brownie (1/2 kg)",
         category: "Brownies"
     },
-    ,
+    
     {
         _id: "5",
         name: "Rose Milk Brownie",

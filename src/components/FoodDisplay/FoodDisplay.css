@@ -9,7 +9,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: #2c3e50;
+  color: #8b4513;
   position: relative;
 }
 
@@ -21,7 +21,8 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
+  background: linear-gradient(45deg, #654321, #8b4513);
+  border-radius: 2px;
 }
 
 .food-display-list {
@@ -35,18 +36,18 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(139, 69, 19, 0.12);
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 69, 19, 0.05);
 }
 
 .food-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
 }
 
-.food-item-image-container {
+.food-item-img-container {
   position: relative;
   width: 100%;
   height: 220px;
@@ -65,20 +66,100 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
   transform: scale(1.1);
 }
 
-.food-item-image-container::before {
+.food-item-img-container::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1));
+  background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.food-item:hover .food-item-image-container::before {
+.food-item:hover .food-item-img-container::before {
   opacity: 1;
+}
+
+/* Add Button Styles */
+.add {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  border: 2px solid white;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  outline: none;
+}
+
+.add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #7c858d, #6a7278);
+}
+
+.add:active {
+  transform: translateY(0);
+}
+
+/* Food Item Counter Styles */
+.food-item-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 25px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  gap: 8px;
+}
+
+.food-item-counter div {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid;
+  user-select: none;
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  border-color: white;
+  color: white;
+}
+
+.food-item-counter div:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #7c858d, #6a7278);
+}
+
+.food-item-counter div:active {
+  transform: scale(0.9);
+}
+
+.food-item-counter p {  
+  margin: 0;
+  font-weight: 600;
+  color: #8b4513;
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
 }
 
 .food-item-info {
@@ -88,14 +169,14 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
   gap: 0.8rem;
 }
 
-.food-item-name {
+.food-item-name-rating {
   margin: 0;
 }
 
-.food-item-name p {
+.food-item-name-rating p {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #000000;
   margin: 0;
   line-height: 1.3;
   display: -webkit-box;
@@ -104,9 +185,9 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
   overflow: hidden;
 }
 
-.food-item-description {
+.food-item-desc {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: rgba(0, 0, 0, 0.7);
   line-height: 1.5;
   margin: 0;
   display: -webkit-box;
@@ -118,13 +199,9 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
 .food-item-price {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #27ae60;
+  color: #8b4513;
   margin: 0;
   align-self: flex-start;
-  background: linear-gradient(45deg, #27ae60, #2ecc71);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Responsive Design */
@@ -156,7 +233,7 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
     gap: 1.5rem;
   }
 
-  .food-item-image-container {
+  .food-item-img-container {
     height: 200px;
   }
 
@@ -164,12 +241,32 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
     padding: 1rem;
   }
 
-  .food-item-name p {
+  .food-item-name-rating p {
     font-size: 1.1rem;
   }
 
   .food-item-price {
     font-size: 1.2rem;
+  }
+
+  .add {
+    padding: 6px 12px;
+    font-size: 12px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 15px;
+  }
+
+  .food-item-counter {
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 10px;
+  }
+
+  .food-item-counter div {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
   }
 }
 
@@ -187,8 +284,20 @@ background: linear-gradient(45deg, #654321, #A0522D);  border-radius: 2px;
     border-radius: 15px;
   }
 
-  .food-item-image-container {
+  .food-item-img-container {
     height: 180px;
+  }
+
+  .add {
+    padding: 5px 10px;
+    font-size: 11px;
+    border-radius: 12px;
+  }
+
+  .food-item-counter div {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
   }
 }
 
