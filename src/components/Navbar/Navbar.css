@@ -55,19 +55,29 @@
 }
 
 .bag-icon img {
- width: 28px;
- height: 28px;
+ width: 36px;
+ height: 36px;
  object-fit: contain;
 }
 
-.bag-dot{
- position: absolute;
- width: 12px;
- height: 12px;
- background-color: #8B4513;
- border-radius: 50%;
- top: -10px;
- right: -10px;
+
+
+.bag-dot {
+    position: absolute;
+    min-width: 18px;
+    min-height: 18px;
+    background-color: #ff6347;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    padding: 2px 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar-right img {
@@ -198,8 +208,8 @@
  }
  
  .bag-icon img {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
  }
 }
 
@@ -235,7 +245,7 @@
  }
  
  .bag-icon img {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
  }
 }
