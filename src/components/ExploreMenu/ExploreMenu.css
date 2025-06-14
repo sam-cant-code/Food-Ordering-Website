@@ -68,12 +68,12 @@
 
 /* Active state for selected category */
 .explore-menu-list-item img.active {
-    border: 4px solid #ff6b35;
-    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+    border: 4px solid #8B4513;
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
 }
 
 .explore-menu-list-item p.active {
-    color: #ff6b35;
+    color: #8B4513;
     font-weight: 700;
 }
 

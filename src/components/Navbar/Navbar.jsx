@@ -3,7 +3,7 @@ import './Navbar.css'
 import { useState } from "react";
 import { assets } from '../../assets/assets'
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
 
   const [menu, setMenu] = useState("home");
 
@@ -17,11 +17,11 @@ const Navbar = () => {
         </ul>
         <div className="navbar-right">
             <img src={assets.search_icon} alt="" />
-            <div className="basket-icon">
-                <img src={assets.basket_icon} alt="" />
-                <div className="basket-dot">.</div>
+            <div className="bag-icon">
+                <img src={assets.bag_icon} alt="" />
+                <div className="bag-dot"></div>
             </div>
-            <button className="navbar-button">Sign In</button>
+            <button onClick={()=>setShowLogin(true)} className="navbar-button">Sign In</button>
         </div>
     </div>
   )

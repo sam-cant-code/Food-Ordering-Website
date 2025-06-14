@@ -29,6 +29,9 @@ import muttamittai from './specialitysweets_muttamittai.png'
 
 
 
+import youtube_icon from './youtube_icon.png'
+import instagram_icon from './instagram_icon.png'
+
 
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
@@ -57,8 +60,8 @@ export const assets = {
     remove_icon_red,
     app_store,
     play_store,
-    linkedin_icon,
-    facebook_icon,
+    instagram_icon,
+    youtube_icon,
     twitter_icon,
     cross_icon,
     selector_icon,
