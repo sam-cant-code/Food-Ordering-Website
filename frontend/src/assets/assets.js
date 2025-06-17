@@ -21,6 +21,12 @@ import friedtreats_doughnut from './friedtreats_doughnut.png'
 import friedtreats_bombolini from './friedtreats_bombolini.png'
 import cookies from './cookies1.png'
 import muttamittai from './specialitysweets_muttamittai.png'
+import bananawalnut from './cakes_bananawalnut.png'
+import chocolatetruffle from './cakes_chocolatetruffle.png'
+import brownie_wheatbrownsugar from './brownie_wheatbrownsugar.png'
+import cakes_dreamcake from './cakes_dreamcake.png'
+
+
 
 
 
@@ -188,9 +194,34 @@ export const food_list = [
         _id: "12",
         name: "Mutta Mittai",
         image: muttamittai,
-        price: 40,
+        price: 400,
         description: "Traditional egg-shaped sweet",
         category: "Speciality Sweets"
     },
+    {
+        _id: "13",
+        name: "Banana Walnut Cake",
+        image: bananawalnut,
+        price: 400,
+        description: "",
+        category: "Cakes"
+    },
+    {
+        _id: "14",
+        name: "Wheat Brown Sugar Brownie",
+        image: brownie_wheatbrownsugar,
+        price: 800,
+        description: "",
+        category: "Cakes"
+    },
+    {
+        _id: "15",
+        name: "Dream Cake",
+        image: cakes_dreamcake,
+        price: 800,
+        description: "",
+        category: "Cakes"
+    },
+
 
 ]
