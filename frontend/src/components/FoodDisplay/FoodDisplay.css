@@ -223,6 +223,128 @@
   margin: 0;
   align-self: flex-start;
 }
+/* Food Item Unit of Measurement */
+.food-item-unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 4px 8px;
+  background: rgba(139, 69, 19, 0.08);
+  border-radius: var(--border-radius-sm);
+  display: inline-block;
+  border: 1px solid rgba(139, 69, 19, 0.15);
+  transition: var(--transition-fast);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Alternative styles for different placements */
+
+/* If placed next to price */
+.food-item-price-unit {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.food-item-price-unit .food-item-price {
+  margin: 0;
+}
+
+.food-item-price-unit .food-item-unit {
+  font-size: 0.9rem;
+  background: rgba(139, 69, 19, 0.1);
+  color: var(--primary-brown);
+  font-weight: 600;
+}
+
+/* If used as a small badge/tag */
+.food-item-unit-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background: var(--primary-brown);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  z-index: 2;
+}
+
+/* If used inline with name */
+.food-item-name-unit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.food-item-name-unit .food-item-unit {
+  font-size: 0.8rem;
+  background: rgba(139, 69, 19, 0.06);
+  border-color: rgba(139, 69, 19, 0.12);
+}
+
+/* Hover effects */
+.food-item:hover .food-item-unit {
+  background: rgba(139, 69, 19, 0.12);
+  border-color: rgba(139, 69, 19, 0.2);
+}
+
+.food-item:hover .food-item-unit-badge {
+  background: var(--light-brown);
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .food-item-unit {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+  
+  .food-item-price-unit .food-item-unit {
+    font-size: 0.85rem;
+  }
+  
+  .food-item-unit-badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .food-item-name-unit .food-item-unit {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-item-unit {
+    font-size: 0.75rem;
+    padding: 2px 5px;
+  }
+  
+  .food-item-price-unit {
+    gap: 6px;
+  }
+  
+  .food-item-price-unit .food-item-unit {
+    font-size: 0.8rem;
+  }
+  
+  .food-item-unit-badge {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
 
 /* Back Button Shared Styles */
 .back-button,
@@ -498,6 +620,7 @@
   .food-item-price {
     font-size: 1.2rem;
   }
+  
 
   .add {
     padding: 6px 12px;

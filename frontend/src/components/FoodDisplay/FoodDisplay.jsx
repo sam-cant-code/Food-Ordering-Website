@@ -102,6 +102,7 @@ const FoodDisplay = ({category}) => {
                                     </div>
                                     <p className='food-item-desc'>{item.description || 'No description'}</p>
                                     <p className='food-item-price'>₹{item.price || 0}</p>
+                                    <p className='food-item-unit'>{item.unit || " per unit"}</p>
                                 </div>
                             </div>
                         )

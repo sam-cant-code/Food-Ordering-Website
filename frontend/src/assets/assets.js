@@ -108,39 +108,44 @@ export const food_list = [
         price: 350,
         description: "Rich and fudgy classic brownie (1/2 kg)",
         category: "Brownies"
+        
     },
     {
         _id: "2",
         name: "Ragi Brownie",
         image: brownie_ragi,
-        price: 375,
+        price: 200,
         description: "Healthy ragi brownie with rich taste (1/2 kg)",
-        category: "Brownies"
+        category: "Brownies",
+        unit: "per 1/4kg"
     },
     {
         _id: "3",
         name: "Classic Brownie with Almonds & Chocolate Filling",
         image: brownie_nuts,
         price: 400,
-        description: "Classic brownie loaded with almonds and chocolate filling (1/2 kg)",
-        category: "Brownies"
+        description: "Classic brownie loaded with almonds and chocolate filling (1/4 kg)",
+        category: "Brownies",
+        unit: "per 1/4kg" 
     },
     {
         _id: "4",
         name: "White Chocolate Brownie",
         image: brownie_whitechocolate,
-        price: 400,
-        description: "Decadent white chocolate brownie (1/2 kg)",
-        category: "Brownies"
+        price: 250,
+        description: "Decadent white chocolate brownie (1/4 kg)",
+        category: "Brownies",
+        unit: "per 1/4kg"
     },
     
     {
         _id: "5",
         name: "Rose Milk Brownie",
         image: brownie_rosemilk,
-        price: 375,
+        price: 225,
         description: "Unique rose milk flavored brownie",
-        category: "Brownies"
+        category: "Brownies",
+        unit: "per 1/4kg"
     },
     {
         _id: "6",
@@ -162,7 +167,7 @@ export const food_list = [
         _id: "8",
         name: "Dates Cake",
         image: cakes_datecake,
-        price: 400,
+        price: 325,
         description: "Healthy and delicious dates cake",
         category: "Cakes"
     },
@@ -186,9 +191,10 @@ export const food_list = [
         _id: "11",
         name: "Cookies", 
         image: cookies,
-        price: 25,
+        price: 200,
         description: "Freshly baked cookies",
-        category: "Cookies"
+        category: "Cookies",
+        unit: "6 pieces 175g"
     },
     {
         _id: "12",
@@ -196,7 +202,8 @@ export const food_list = [
         image: muttamittai,
         price: 400,
         description: "Traditional egg-shaped sweet",
-        category: "Speciality Sweets"
+        category: "Speciality Sweets",
+        unit: "per 1/2kg"
     },
     {
         _id: "13",
@@ -204,15 +211,17 @@ export const food_list = [
         image: bananawalnut,
         price: 400,
         description: "",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/2kg"
     },
     {
         _id: "14",
         name: "Wheat Brown Sugar Brownie",
         image: brownie_wheatbrownsugar,
-        price: 800,
+        price: 225,
         description: "",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/4kg"
     },
     {
         _id: "15",
@@ -220,7 +229,8 @@ export const food_list = [
         image: cakes_dreamcake,
         price: 800,
         description: "",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/2kg"
     },
 
 
