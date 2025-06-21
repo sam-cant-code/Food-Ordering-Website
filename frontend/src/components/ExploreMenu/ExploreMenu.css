@@ -51,6 +51,38 @@
     border-radius: 50%;
     margin-bottom: 10px;
     transition: all 0.3s ease;
+    /* Placeholder styling for when image doesn't load */
+    background-color: #e0e0e0;
+    background-image: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border: 2px solid #d0d0d0;
+    /* Ensure the element maintains its circular shape even without src */
+    display: block;
+    position: relative;
+}
+
+/* Add a subtle pattern or icon when image fails to load */
+.explore-menu-list-item img::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Hide the before pseudo-element when image loads successfully */
+.explore-menu-list-item img[src]:not([src=""]) {
+    background: none;
+}
+
+.explore-menu-list-item img[src]:not([src=""])::before {
+    display: none;
 }
 
 .explore-menu-list-item:hover img {
@@ -107,6 +139,11 @@
         margin-bottom: 10px;
     }
     
+    .explore-menu-list-item img::before {
+        width: 20px;
+        height: 20px;
+    }
+    
     .explore-menu-list-item p {
         font-size: 0.9rem;
     }
@@ -133,6 +170,11 @@
     .explore-menu-list-item img {
         width: 70px;
         height: 70px;
+    }
+    
+    .explore-menu-list-item img::before {
+        width: 18px;
+        height: 18px;
     }
     
     .explore-menu-list-item p {
