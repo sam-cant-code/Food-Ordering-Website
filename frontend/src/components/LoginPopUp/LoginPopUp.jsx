@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './LoginPopUp.css';
 import { assets } from '../../assets/assets';
+import { StoreContext } from '../../context/StoreContext';
+import axios from 'axios';
 
 const LoginPopUp = ({ setShowLogin }) => {
+  const { url, setToken } = useContext(StoreContext);
   const [currentState, setCurrentState] = useState("Sign Up");
   const [formData, setFormData] = useState({
     name: '',
@@ -10,14 +13,7 @@ const LoginPopUp = ({ setShowLogin }) => {
     password: ''
   });
 
-  const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setFormData(data=>({...data, [name]:value}))
-  }
-
   const isSignUp = currentState === "Sign Up";
-  const isLogin = currentState === "Login";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,10 +23,26 @@ const LoginPopUp = ({ setShowLogin }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your authentication logic here
-    console.log('Form submitted:', formData);
+  const onLogin = async (event) => {
+    event.preventDefault();
+    let newUrl = url;
+    if (currentState === "Login") {
+      newUrl += "/api/user/login"
+    }
+    else {
+      newUrl += "/api/user/register"
+    }
+    
+    const response = await axios.post(newUrl, formData);
+
+    if(response.data.success){
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      setShowLogin(false); // Fixed: was setsShowLogin(false)
+    }
+    else{
+      alert(response.data.message)
+    }
   };
 
   const toggleState = () => {
@@ -47,7 +59,7 @@ const LoginPopUp = ({ setShowLogin }) => {
     <div className="login-popup">
       <div className="login-popup__overlay" onClick={closePopup} />
       
-      <form className="login-popup__container" onSubmit={handleSubmit}>
+      <form className="login-popup__container" onSubmit={onLogin}>
         <header className="login-popup__header">
           <h2 className="login-popup__title">{currentState}</h2>
           <button 

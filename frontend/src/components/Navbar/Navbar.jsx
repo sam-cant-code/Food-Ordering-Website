@@ -4,11 +4,10 @@ import { assets } from '../../assets/assets';
 import { Link, useLocation } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
-
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState('home');
   const location = useLocation();
-  const { getTotalCartItems } = useContext(StoreContext);
+  const { getTotalCartItems, token, setToken } = useContext(StoreContext);
 
   // Scroll to section smoothly
   const scrollToSection = (sectionId) => {
@@ -33,6 +32,11 @@ const Navbar = ({ setShowLogin }) => {
   const handleMenuClick = (menuItem, sectionId = null) => {
     setMenu(menuItem);
     if (sectionId) scrollToSection(sectionId);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
   };
 
   return (
@@ -72,9 +76,26 @@ const Navbar = ({ setShowLogin }) => {
             <div className="bag-dot">{getTotalCartItems()}</div>
           )}
         </div>
-        <button onClick={() => setShowLogin(true)} className="navbar-button">
-          Sign In
-        </button>
+        {!token ? (
+          <button onClick={() => setShowLogin(true)} className="navbar-button">
+            Sign In
+          </button>
+        ) : (
+          <div className="navbar-profile">
+            <img src={assets.profile_icon} alt="Profile" />
+            <ul className="nav-profile-dropdown">
+              <li>
+                <img src={assets.bag_icon} alt="Orders" />
+                <p>Orders</p>
+              </li>
+              <hr />
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="Logout" />
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
