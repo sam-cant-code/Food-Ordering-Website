@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets';
 import { Link, useLocation } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
+
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState('home');
   const location = useLocation();
