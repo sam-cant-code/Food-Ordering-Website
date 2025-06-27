@@ -1,12 +1,30 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
-    const url = import.meta.env.VITE_BACKEND_URL;  // ✅ Load from .env
-    const [token, setToken] = useState("");
+    const url = import.meta.env.VITE_BACKEND_URL;
+
+    // 1. Load token from localStorage
+    const [token, setToken] = useState(() => localStorage.getItem("token") || "");
+
+    // 2. Sync token to localStorage when it changes
+    useEffect(() => {
+        if (token) {
+            localStorage.setItem("token", token);
+        } else {
+            localStorage.removeItem("token");
+        }
+    }, [token]);
+
+    // Optional: logout function
+    const logout = () => {
+        setToken("");
+        setCartItems({});
+        localStorage.removeItem("token");
+    };
 
     const addToCart = (itemId) => {
         if (!cartItems[itemId]) {
@@ -22,9 +40,7 @@ const StoreContextProvider = (props) => {
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;
-        if (!food_list || !Array.isArray(food_list)) {
-            return totalAmount;
-        }
+        if (!food_list || !Array.isArray(food_list)) return totalAmount;
 
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
@@ -58,6 +74,7 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
+        logout, //  expose logout
     };
 
     return (
