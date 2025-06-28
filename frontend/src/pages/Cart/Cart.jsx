@@ -25,7 +25,7 @@ const Cart = () => {
   }, []);
 
   if (!food_list || !Array.isArray(food_list)) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   const handleContinueShopping = () => {
@@ -40,15 +40,6 @@ const Cart = () => {
     <div className="cart">
       <div className="cart-container">
         <div className="cart-items-section">
-          <div className="cart-items-header">
-            <div className="header-item hide-mobile">Items</div>
-            <div className="header-title">Title</div>
-            <div className="header-price hide-mobile">Price</div>
-            <div className="header-quantity">Quantity</div>
-            <div className="header-total">Total</div>
-            <div className="header-remove">Remove</div>
-          </div>
-
           {/* ✅ Show empty cart message if no items */}
           {isCartEmpty ? (
             <div className="empty-cart-message">
@@ -62,36 +53,51 @@ const Cart = () => {
               if (cartItems[item._id] > 0) {
                 return (
                   <div key={index} className="cart-item-row">
-                    <div className="item-image hide-mobile">
-                      <img src={item.image} alt={item.name} />
-                    </div>
-                    <div className="item-title">{item.name}</div>
-                    <div className="item-price hide-mobile">₹{item.price}</div>
-                    <div className="item-quantity quantity-toggle">
-                      <button
-                        className="qty-btn"
-                        onClick={() => decreaseQuantity(item._id)}
-                      >
-                        −
-                      </button>
-                      <span>{cartItems[item._id]}</span>
-                      <button
-                        className="qty-btn"
-                        onClick={() => addToCart(item._id)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <div className="item-total">
-                      ₹{item.price * cartItems[item._id]}
-                    </div>
-                    <div className="item-remove">
-                      <button
-                        onClick={() => removeFromCart(item._id)}
-                        className="remove-btn"
-                      >
-                        ×
-                      </button>
+                    <div className="item-content">
+                      <div className="item-image">
+                        <img src={item.image} alt={item.name} />
+                      </div>
+                      
+                      <div className="item-details">
+                        <div className="item-title">{item.name}</div>
+                        <div className="item-subtitle">
+                          {item.category || "Regular"} | {item.description || "New Hand Tossed"}
+                        </div>
+                        
+                        <div className="item-controls">
+                          <div className="quantity-price-section">
+                            <div className="quantity-toggle">
+                              <button
+                                className="qty-btn"
+                                onClick={() => decreaseQuantity(item._id)}
+                              >
+                                −
+                              </button>
+                              <span>{cartItems[item._id]}</span>
+                              <button
+                                className="qty-btn"
+                                onClick={() => addToCart(item._id)}
+                              >
+                                +
+                              </button>
+                            </div>
+                            
+                            <div className="price-section">
+                              <div className="item-price">₹{Math.round(item.price * 1.25)}</div>
+                              <div className="item-total">₹{item.price * cartItems[item._id]}</div>
+                            </div>
+                          </div>
+                          
+                          <div className="item-remove">
+                            <button
+                              onClick={() => removeFromCart(item._id)}
+                              className="remove-btn"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -112,13 +118,12 @@ const Cart = () => {
               </div>
               <div className="total-row">
                 <span>Delivery Fee</span>
-                <span>NA</span>
-                {/* <span>₹{getTotalCartAmount() === 0 ? 0 : 2}</span> */}
+                <span>₹{getTotalCartAmount() === 0 ? 0 : 50}</span>
               </div>
               <div className="total-row total-final">
                 <strong>Total</strong>
                 <strong>
-                  ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                  ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 50}
                 </strong>
               </div>
             </div>
