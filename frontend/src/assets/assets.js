@@ -25,6 +25,7 @@ import bananawalnut from './cakes_bananawalnut.png'
 import chocolatetruffle from './cakes_chocolatetruffle.png'
 import brownie_wheatbrownsugar from './brownie_wheatbrownsugar.png'
 import cakes_dreamcake from './cakes_dreamcake.png'
+import cakes_chocolatetruffle from './cakes_chocolatetruffle.png'
 
 
 
@@ -105,55 +106,58 @@ export const food_list = [
         _id: "1",
         name: "Classic Fudgy Brownie",
         image: brownie_classic, 
-        price: 350,
+        price: 399,
         description: "Rich and fudgy classic brownie (1/2 kg)",
-        category: "Brownies"
+        category: "Brownies",
+        unit: "per 1/2kg"
         
     },
     {
         _id: "2",
         name: "Ragi Brownie",
         image: brownie_ragi,
-        price: 200,
+        price: 425,
         description: "Healthy ragi brownie with rich taste (1/2 kg)",
         category: "Brownies",
-        unit: "per 1/4kg"
+        unit: "per 1/2kg"
     },
     {
         _id: "3",
         name: "Classic Brownie with Almonds & Chocolate Filling",
         image: brownie_nuts,
-        price: 400,
-        description: "Classic brownie loaded with almonds and chocolate filling (1/4 kg)",
+        price: 450,
+        description: "Classic brownie loaded with almonds and chocolate filling (1/2 kg)",
         category: "Brownies",
-        unit: "per 1/4kg" 
+        unit: "per 1/2kg" 
     },
     {
         _id: "4",
         name: "White Chocolate Brownie",
         image: brownie_whitechocolate,
-        price: 250,
-        description: "Decadent white chocolate brownie (1/4 kg)",
+        price: 425,
+        description: "Decadent white chocolate brownie (1/2 kg)",
         category: "Brownies",
-        unit: "per 1/4kg"
+        unit: "per 1/2kg"
     },
     
     {
         _id: "5",
         name: "Rose Milk Brownie",
         image: brownie_rosemilk,
-        price: 225,
+        price: 425,
         description: "Unique rose milk flavored brownie",
         category: "Brownies",
-        unit: "per 1/4kg"
+        unit: "per 1/2kg"
     },
     {
         _id: "6",
         name: "Tea Cake",
         image: cakes_teacake,
-        price: 275,
+        price: 299,
         description: "Classic tea cake perfect for evening snacks (1/2 kg)",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/2kg"
+
     },
     {
         _id: "7",
@@ -161,15 +165,19 @@ export const food_list = [
         image: cakes_plumcake,
         price: 450,
         description: "Traditional rich plum cake with dry fruits",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/2kg"
+
     },
     {
         _id: "8",
         name: "Dates Cake",
         image: cakes_datecake,
-        price: 325,
+        price: 350,
         description: "Healthy and delicious dates cake",
-        category: "Cakes"
+        category: "Cakes",
+        unit: "per 1/2kg"
+
     },
     {
         _id: "9",
@@ -177,7 +185,9 @@ export const food_list = [
         image: friedtreats_doughnut,
         price: 50,
         description: "Fresh and fluffy doughnuts",
-        category: "Fried Treats"
+        category: "Fried Treats",
+        unit: "per piece"
+
     },
     {
         _id: "10",
@@ -185,16 +195,18 @@ export const food_list = [
         image: friedtreats_bombolini,
         price: 60,
         description: "Italian-style filled doughnuts",
-        category: "Fried Treats"
+        category: "Fried Treats",
+        unit: "per piece"
+
     },
     {
         _id: "11",
         name: "Cookies", 
         image: cookies,
-        price: 200,
+        price: 450,
         description: "Freshly baked cookies",
         category: "Cookies",
-        unit: "6 pieces 175g"
+        unit: "per 1/2 kg"
     },
     {
         _id: "12",
@@ -218,20 +230,27 @@ export const food_list = [
         _id: "14",
         name: "Wheat Brown Sugar Brownie",
         image: brownie_wheatbrownsugar,
-        price: 225,
+        price: 425,
         description: "",
-        category: "Cakes",
-        unit: "per 1/4kg"
+        category: "Brownies",
+        unit: "per 1/2kg"
     },
     {
         _id: "15",
-        name: "Dream Cake",
+        name: "Butterscotch Dream Cake",
         image: cakes_dreamcake,
-        price: 800,
+        price: 400,
         description: "",
         category: "Cakes",
         unit: "per 1/2kg"
     },
-
-
+    {
+        _id: "16",
+        name: "Chocolate Truffle Cake",
+        image: cakes_chocolatetruffle,
+        price: 525,
+        description: "",
+        category: "Cakes",
+        unit: "per 1/2kg"
+    }
 ]

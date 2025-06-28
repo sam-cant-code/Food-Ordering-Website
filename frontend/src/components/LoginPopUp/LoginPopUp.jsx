@@ -5,7 +5,7 @@ import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 
 const LoginPopUp = ({ setShowLogin }) => {
-  const { url, setToken } = useContext(StoreContext);
+  const { url, setToken, setUserName } = useContext(StoreContext);
   const [currentState, setCurrentState] = useState("Sign Up");
   const [formData, setFormData] = useState({
     name: '',
@@ -27,27 +27,41 @@ const LoginPopUp = ({ setShowLogin }) => {
     event.preventDefault();
     let newUrl = url;
     if (currentState === "Login") {
-      newUrl += "/api/user/login"
+      newUrl += "/api/user/login";
+    } else {
+      newUrl += "/api/user/register";
     }
-    else {
-      newUrl += "/api/user/register"
-    }
-    
-    const response = await axios.post(newUrl, formData);
 
-    if(response.data.success){
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      setShowLogin(false); // Fixed: was setsShowLogin(false)
-    }
-    else{
-      alert(response.data.message)
+    try {
+      const response = await axios.post(newUrl, formData);
+      console.log("🧪 Backend response:", response.data); // Debug log
+
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        console.log("✅ Token set:", response.data.token);
+
+        if ("name" in response.data) {
+          setUserName(response.data.name);
+          localStorage.setItem("userName", response.data.name);
+          console.log("✅ userName set:", response.data.name);
+        } else {
+          console.warn("⚠️ 'name' not found in response!");
+        }
+
+        setShowLogin(false);
+      } else {
+        alert(response.data.message);
+        console.warn("❌ Login/Register failed:", response.data.message);
+      }
+    } catch (error) {
+      console.error("🚨 Login error:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
 
   const toggleState = () => {
     setCurrentState(isSignUp ? "Login" : "Sign Up");
-    // Clear form when switching
     setFormData({ name: '', email: '', password: '' });
   };
 
@@ -58,12 +72,12 @@ const LoginPopUp = ({ setShowLogin }) => {
   return (
     <div className="login-popup">
       <div className="login-popup__overlay" onClick={closePopup} />
-      
+
       <form className="login-popup__container" onSubmit={onLogin}>
         <header className="login-popup__header">
           <h2 className="login-popup__title">{currentState}</h2>
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="login-popup__close-btn"
             onClick={closePopup}
             aria-label="Close popup"
@@ -84,7 +98,7 @@ const LoginPopUp = ({ setShowLogin }) => {
               required
             />
           )}
-          
+
           <input
             type="email"
             name="email"
@@ -94,7 +108,7 @@ const LoginPopUp = ({ setShowLogin }) => {
             onChange={handleInputChange}
             required
           />
-          
+
           <input
             type="password"
             name="password"
@@ -112,8 +126,8 @@ const LoginPopUp = ({ setShowLogin }) => {
 
         <p className="login-popup__toggle">
           {isSignUp ? "Already have an account? " : "Don't have an account? "}
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="login-popup__toggle-btn"
             onClick={toggleState}
           >

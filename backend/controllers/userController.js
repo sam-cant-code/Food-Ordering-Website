@@ -4,32 +4,30 @@ import bcrypt from "bcrypt"
 import validator from "validator"
 
 //login user
-const loginUser = async (req,res) => {
-    const {email, password} = req.body;  // Note: email, not name for login
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
     try {
-        // Find user by email
-        const user = await userModel.findOne({email})
-        
-        if(!user) {
-            return res.json({success:false, message:"User doesn't exist"})
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.json({ success: false, message: "User doesn't exist" });
         }
-        
-        // Compare password with hashed password
-        const isMatch = await bcrypt.compare(password, user.password)
-        
-        if(!isMatch) {
-            return res.json({success:false, message:"Invalid credentials"})
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.json({ success: false, message: "Invalid credentials" });
         }
-        
-        // Create token and send response
-        const token = createToken(user._id)
-        res.json({success:true, token})
-        
+
+        const token = createToken(user._id);
+        res.json({ success: true, token, name: user.name }); // ✅ Include name
+
     } catch (error) {
         console.log(error);
-        res.json({success:false, message:"Error occurred"})
+        res.json({ success: false, message: "Error occurred" });
     }
-}
+};
+
 
 const createToken = (id) => {
     return jwt.sign({id},process.env.JWT_SECRET)
@@ -64,7 +62,8 @@ const registerUser = async (req, res) => {
         const user = await newUser.save();
         const token = createToken(user._id);
 
-        res.json({ success: true, token });
+        res.json({ success: true, token, name: user.name }); // ✅ Add name here
+
 
     } catch (error) {
         console.error("Registration error:", error.message);

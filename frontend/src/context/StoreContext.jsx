@@ -7,10 +7,14 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const url = import.meta.env.VITE_BACKEND_URL;
 
-    // 1. Load token from localStorage
+    // 🔐 Load token and name from localStorage
     const [token, setToken] = useState(() => localStorage.getItem("token") || "");
+    const [userName, setUserName] = useState(() => localStorage.getItem("userName") || "");
+    
+    // 🔄 Login popup state
+    const [showLogin, setShowLogin] = useState(false);
 
-    // 2. Sync token to localStorage when it changes
+    // 🔄 Sync token and name to localStorage
     useEffect(() => {
         if (token) {
             localStorage.setItem("token", token);
@@ -19,19 +23,28 @@ const StoreContextProvider = (props) => {
         }
     }, [token]);
 
-    // Optional: logout function
+    useEffect(() => {
+        if (userName) {
+            localStorage.setItem("userName", userName);
+        } else {
+            localStorage.removeItem("userName");
+        }
+    }, [userName]);
+
+    // 🔓 Logout function clears everything
     const logout = () => {
         setToken("");
+        setUserName("");
         setCartItems({});
         localStorage.removeItem("token");
+        localStorage.removeItem("userName");
     };
 
     const addToCart = (itemId) => {
-        if (!cartItems[itemId]) {
-            setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-        } else {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-        }
+        setCartItems((prev) => ({
+            ...prev,
+            [itemId]: (prev[itemId] || 0) + 1
+        }));
     };
 
     const removeFromCart = (itemId) => {
@@ -74,7 +87,11 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        logout, //  expose logout
+        userName,
+        setUserName,
+        logout,
+        showLogin,
+        setShowLogin,
     };
 
     return (

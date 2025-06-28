@@ -4,8 +4,21 @@
   font-family: 'Outfit', sans-serif;
 }
 
+/* Full width navbar - no constraints */
+.navbar {
+  width: 100vw;
+  margin: 0;
+}
+
+/* App container for main content - keeps your existing layout */
 .app {
   margin: auto;
   width: 85%;
-  padding-left: 0px; /* fixed: negative padding is not allowed */
+  padding-left: 0px;
+}
+
+/* Optional: If you want footer to be full width too */
+.footer {
+  width: 100vw;
+  margin: 0;
 }
