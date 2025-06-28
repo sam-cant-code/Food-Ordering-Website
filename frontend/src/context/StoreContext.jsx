@@ -51,6 +51,22 @@ const StoreContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     };
 
+    // ✅ Added missing decreaseQuantity function
+    const decreaseQuantity = (itemId) => {
+        setCartItems((prev) => {
+            const currentQuantity = prev[itemId] || 0;
+            if (currentQuantity <= 1) {
+                // Remove item completely if quantity would become 0 or less
+                const { [itemId]: removed, ...rest } = prev;
+                return rest;
+            }
+            return {
+                ...prev,
+                [itemId]: currentQuantity - 1
+            };
+        });
+    };
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         if (!food_list || !Array.isArray(food_list)) return totalAmount;
@@ -82,6 +98,7 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
+        decreaseQuantity, // ✅ Added to context value
         getTotalCartAmount,
         getTotalCartItems,
         url,

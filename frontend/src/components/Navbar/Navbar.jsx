@@ -80,6 +80,16 @@ const Navbar = ({ setShowLogin }) => {
     setIsDropdownOpen(false);
   }, [setShowLogin]);
 
+  // ✅ New function to handle cart click and scroll to top
+  const handleCartClick = useCallback((e) => {
+    // Scroll to top immediately when cart is clicked
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
@@ -118,9 +128,14 @@ const Navbar = ({ setShowLogin }) => {
             <img src={assets.search_icon} alt="" className="navbar-icon" />
           </button>
 
-          {/* Cart Icon */}
+          {/* Cart Icon - ✅ Added onClick handler */}
           <div className="cart-container">
-            <Link to="/cart" className="cart-link" aria-label={`Cart with ${cartItemCount} items`}>
+            <Link 
+              to="/cart" 
+              className="cart-link" 
+              aria-label={`Cart with ${cartItemCount} items`}
+              onClick={handleCartClick}
+            >
               <div className="cart-icon-wrapper">
                 <img src={assets.bag_icon} alt="" className="navbar-icon" />
                 {cartItemCount > 0 && (
